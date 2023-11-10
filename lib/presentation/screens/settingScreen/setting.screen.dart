@@ -44,7 +44,7 @@ class SettingScreen extends StatelessWidget {
               onTap: () {
                 _themeNotifier.toggleTheme();
               },
-              icons: Icons.dark_mode_rounded,
+              icons: Icons.dark_mode_outlined,
               iconStyle: IconStyle(
                 iconsColor: Colors.white,
                 withBackground: true,
@@ -84,7 +84,7 @@ class SettingScreen extends StatelessWidget {
               onTap: () {
                 Navigator.of(context).pushNamed(AppRouter.prevbookingRoute);
               },
-              icons: CupertinoIcons.bookmark_fill,
+              icons: Icons.library_books_outlined,
               iconStyle: IconStyle(
                 backgroundColor: Colors.brown,
               ),
@@ -97,7 +97,7 @@ class SettingScreen extends StatelessWidget {
                 launchUrl(_url);
               },
               themeFlag: themeFlag,
-              icons: Icons.fingerprint,
+              icons: Icons.fingerprint_outlined,
               iconStyle: IconStyle(
                 iconsColor: Colors.white,
                 withBackground: true,
@@ -111,7 +111,7 @@ class SettingScreen extends StatelessWidget {
               onTap: () {
                 Navigator.of(context).pushNamed(AppRouter.aboutRoute);
               },
-              icons: Icons.info_rounded,
+              icons: Icons.info_outline,
               iconStyle: IconStyle(
                 backgroundColor: Colors.purple,
               ),
@@ -123,7 +123,7 @@ class SettingScreen extends StatelessWidget {
               onTap: () {
                 Navigator.of(context).pushNamed(AppRouter.feedbackRoute);
               },
-              icons: CupertinoIcons.chat_bubble,
+              icons: Icons.chat_bubble_outline_outlined,
               iconStyle: IconStyle(
                 backgroundColor: Colors.deepOrangeAccent,
               ),
@@ -135,7 +135,7 @@ class SettingScreen extends StatelessWidget {
               onTap: () {
                 showAlertDialog(context: context, themeFlag: themeFlag);
               },
-              icons: Icons.logout,
+              icons: Icons.logout_outlined,
               iconStyle: IconStyle(
                 backgroundColor: Colors.red,
               ),

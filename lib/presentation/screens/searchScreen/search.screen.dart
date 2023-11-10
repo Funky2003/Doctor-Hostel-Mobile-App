@@ -191,20 +191,21 @@ class _SearchScreenState extends State<SearchScreen> {
             builder: (context, notifier, _) {
               return FutureBuilder(
                 future: notifier.getSearchRooms(
-                  roomName: searchProductController.text.replaceAll(' ', ''),
+                  roomName: searchProductController.text.replaceAll('', ''),
                 ),
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return ShimmerEffects.loadShimmerFavouriteandSearch(
                         context: context, displayTrash: false);
                   } else {
-                    List _snapshot = snapshot.data as List;
-                    print(searchProductController.text.replaceAll(' ', ''));
-                    if (_snapshot.length == 0 || _snapshot.isEmpty) {
+
+                    if (snapshot.data == null) {
                       return noDataFound(
                         themeFlag: themeFlag,
                       );
                     } else {
+                      List _snapshot = snapshot.data as List;
+                      print(searchProductController.text.replaceAll(' ', ''));
                       return ListView.builder(
                         shrinkWrap: true,
                         itemCount: snapshot.data.length,

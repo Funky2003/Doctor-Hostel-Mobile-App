@@ -4,8 +4,7 @@ import 'package:room_booking/app/constants/app.colors.dart';
 import 'package:room_booking/core/models/favourite.model.dart';
 
 class FavouriteItem extends StatelessWidget {
-  FavouriteItem({Key? key, this.onTap, required this.favouriteModel, this.onDelete})
-      : super(key: key);
+  FavouriteItem({Key? key, this.onTap, required this.favouriteModel, this.onDelete}) : super(key: key);
 
   final GestureTapCallback? onTap;
   final GestureTapCallback? onDelete;

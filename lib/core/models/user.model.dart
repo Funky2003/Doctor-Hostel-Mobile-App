@@ -1,10 +1,7 @@
 import 'dart:convert';
 
-List<UserModel> userModelFromJson(String str) =>
-    List<UserModel>.from(json.decode(str).map((x) => UserModel.fromJson(x)));
-
-String userModelToJson(List<UserModel> data) =>
-    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+List<UserModel> userModelFromJson(String str) => List<UserModel>.from(json.decode(str).map((x) => UserModel.fromJson(x)));
+String userModelToJson(List<UserModel> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class UserModel {
   UserModel({
@@ -33,7 +30,7 @@ class UserModel {
         userPassword: json["user_password"],
         userPhoneNo: json["user_phone_no"],
         userProfileUrl: json["user_profile_url"],
-      );
+  );
 
   Map<String, dynamic> toJson() => {
         "user_id": userId,

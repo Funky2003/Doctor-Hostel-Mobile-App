@@ -73,6 +73,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 borderRadius: BorderRadius.circular(50.0),
                                 child: Image.network(
                                   widget.profileTaskArgs!.user_image!,
+                                  fit: BoxFit.cover,
                                 ),
                               )
                             : ClipRRect(

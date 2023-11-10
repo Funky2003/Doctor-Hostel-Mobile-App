@@ -356,7 +356,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                               ),
                                             ),
                                             SizedBox(
-                                              width: MediaQuery.of(context).size.width * 0.12,
+                                              width: MediaQuery.of(context).size.width * 0.18,
                                               child: RawMaterialButton(
                                                 onPressed: (){
                                                   Navigator.popAndPushNamed(context, '/signup');

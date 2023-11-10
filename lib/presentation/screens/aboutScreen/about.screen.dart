@@ -74,7 +74,7 @@ class AboutScreen extends StatelessWidget {
             height: mediaQueryHeight / 40,
           ),
           Text(
-            'For Any Queries ,\n Contact : dev.adnani26@gmail.com',
+            'For Any Queries ,\n Contact : nusetorsetsofia101@gmail.com',
             textAlign: TextAlign.center,
             style: kBodyText.copyWith(
               fontSize: 16,

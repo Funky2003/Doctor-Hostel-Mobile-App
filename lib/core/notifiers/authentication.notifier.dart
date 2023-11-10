@@ -82,8 +82,7 @@ class AuthenticationNotifer extends ChangeNotifier {
     }
   }
 
-  Future<PostgrestResponse?> addUserToDatabase(
-      {required UserModel userModel}) async {
+  Future<PostgrestResponse?> addUserToDatabase({required UserModel userModel}) async {
     try {
       PostgrestResponse? response = await SupabaseAPI.supabaseClient.from("users").insert({
         "created_at": userModel.createdAt.toString(),

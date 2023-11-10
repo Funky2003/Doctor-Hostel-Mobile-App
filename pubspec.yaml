@@ -64,9 +64,9 @@ dev_dependencies:
     sdk: flutter
 
 flutter_icons:
-  android: "launcher_icon"
+  android: "flutter_launcher_icons"
   ios: true
-  image_path: "assets/logo/logo.png"
+  image_path: "assets/logo/applogo.png"
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

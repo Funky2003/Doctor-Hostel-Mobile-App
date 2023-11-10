@@ -123,7 +123,6 @@ class _SignupLoginState extends State<SignupLogin> {
               height: MediaQuery.of(context).size.height * 0.2,
               child: Container(
                 decoration: BoxDecoration(
-
                     boxShadow: const [
                       BoxShadow(
                           color: Colors.black38,

@@ -26,10 +26,7 @@ class PhotoService with ChangeNotifier {
     final fileExt = imageFile.path.split('.').last;
     final fileName = '${DateTime.now().toIso8601String()}.$fileExt';
     final filePath = fileName;
-
-    final response = await SupabaseAPI.supabaseClient.storage
-        .from('images/user-profiles')
-        .uploadBinary(filePath, bytes);
+    final response = await SupabaseAPI.supabaseClient.storage.from('images/user-profiles').uploadBinary(filePath, bytes);
     final error = response.error;
 
     if (error != null) {
@@ -37,9 +34,7 @@ class PhotoService with ChangeNotifier {
       print(errorUpload!);
       return false;
     } else {
-      final imageUrlResponse = SupabaseAPI.supabaseClient.storage
-          .from('images/user-profiles')
-          .getPublicUrl(filePath);
+      final imageUrlResponse = SupabaseAPI.supabaseClient.storage.from('images/user-profiles').getPublicUrl(filePath);
       photo_url = imageUrlResponse.data;
       notifyListeners();
       return true;

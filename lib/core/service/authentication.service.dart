@@ -1,16 +1,13 @@
-import 'package:room_booking/app/constants/app.credentials.dart';
 import 'package:room_booking/core/api/supabase.api.dart';
 import 'package:supabase/supabase.dart';
 
 class AuthenticationService {
-  Future<GotrueSessionResponse> signUp(
-      {required String email, required String password}) async {
+  Future<GotrueSessionResponse> signUp({required String email, required String password}) async {
     GotrueSessionResponse res = await SupabaseAPI.supabaseClient.auth.signUp(email, password);
     return res;
   }
 
-  Future<GotrueSessionResponse> login(
-      {required String email, required String password}) async {
+  Future<GotrueSessionResponse> login({required String email, required String password}) async {
     GotrueSessionResponse res = await SupabaseAPI.supabaseClient.auth.signIn(
       email: email,
       password: password,

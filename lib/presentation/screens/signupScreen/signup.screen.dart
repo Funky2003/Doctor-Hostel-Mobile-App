@@ -413,8 +413,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 child: Text(
                                   'Please enter your details to create your account',
                                   style: TextStyle(
-                                      fontWeight: FontWeight.w500
+                                    fontWeight: FontWeight.w500,
                                   ),
+                                  textAlign: TextAlign.center,
                                 ),
                               ),
                             ),
@@ -623,7 +624,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                                   fontWeight: FontWeight.bold),
                                             ),
                                             SizedBox(
-                                              width: MediaQuery.of(context).size.width * 0.11,
+                                              width: MediaQuery.of(context).size.width * 0.18,
                                               child: RawMaterialButton(
                                                 onPressed: () {
                                                   Navigator.popAndPushNamed(context, '/login');

@@ -9,7 +9,6 @@ class RoomService {
 
   // Testing...Testing...Testing...
   Future<PostgrestResponse> getAdminRoomsOnly({required int uID}) async {
-    // uID = 4127545171;
     PostgrestResponse response = await SupabaseAPI.supabaseClient
         .from("rooms")
         .select()

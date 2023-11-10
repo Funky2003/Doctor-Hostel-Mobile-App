@@ -20,9 +20,9 @@ class PageCard extends StatelessWidget {
       ),
       child: Column(
         children: [
-          space(1),
+          space(0.5),
           _buildPicture(context),
-          space(2),
+          space(1),
           _buildText(context),
         ],
       ),
@@ -31,13 +31,13 @@ class PageCard extends StatelessWidget {
 
   Widget _buildPicture(
     BuildContext context, {
-    double size = 380,
+    double size = 350,
   }) {
     return Container(
       width: size,
       height: size,
       margin: const EdgeInsets.only(
-        top: 140,
+        top: 75.0,
       ),
       child: SvgPicture.asset(card.image!),
     );

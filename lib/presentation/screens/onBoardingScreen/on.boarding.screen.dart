@@ -12,18 +12,18 @@ class OnBoardingScreen extends StatefulWidget {
   final List<OnBoardingModel> cards = [
     OnBoardingModel(
       image: AppAssets.onBoardingOne,
-      title: "The best holidays start here!",
+      title: "The best hostel booking experience start here!",
       bgColor: AppColors.mirage,
       textColor: AppColors.yellowish,
     ),
     OnBoardingModel(
       image: AppAssets.onBoardingThree,
-      title: "Feel the real experience.",
+      title: "Feel the real experience of quick and easy hostel booking.",
       bgColor: AppColors.rawSienna,
     ),
     OnBoardingModel(
       image: AppAssets.onBoardingTwo,
-      title: "Stay once, carry memories forever",
+      title: "Find, book, and enjoy your stay!",
       bgColor: AppColors.creamColor,
       textColor: AppColors.mirage,
     ),

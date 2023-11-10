@@ -25,250 +25,245 @@ class AllRoomScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: themeFlag ? AppColors.mirage : AppColors.creamColor,
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.only(top: 5, bottom: 10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(15, 0, 15, 10),
-                child: Text(
-                  "All Rooms",
-                  style: TextStyle(
-                    color: themeFlag ? AppColors.creamColor : AppColors.mirage,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 22,
-                  ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(15, 0, 15, 10),
+              child: Text(
+                "All Rooms",
+                style: TextStyle(
+                  color: themeFlag ? AppColors.creamColor : AppColors.mirage,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 22,
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(15, 0, 15, 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "Find The Best Available Room",
-                      style: TextStyle(
-                        color: themeFlag ? AppColors.creamColor : AppColors.mirage,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 14,
-                      ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(15, 0, 15, 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Find The Best Available Room",
+                    style: TextStyle(
+                      color: themeFlag ? AppColors.creamColor : AppColors.mirage,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 14,
                     ),
-                    const Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        SortMenuTwo(),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        SortMenuOne(),
-                      ],
-                    )
-                  ],
-                ),
+                  ),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SortMenuTwo(),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      SortMenuOne(),
+                    ],
+                  )
+                ],
               ),
-              SizedBox(
-                height: _height * 670,
-                child: FutureBuilder(
-                  future: mainRooms(),
-                  builder: (context, snapshot){
-                    if (!snapshot.hasData){
-                      return ShimmerEffects.loadShimmerFavouriteandSearch(
-                        context: context,
-                        displayTrash: false,
-                      );
-                    } else{
-                      final List<Map<String, dynamic>> itemList = snapshot.data as List<Map<String, dynamic>>;
+            ),
+            Expanded(
+              child: FutureBuilder(
+                future: mainRooms(),
+                builder: (context, snapshot){
+                  if (!snapshot.hasData){
+                    return ShimmerEffects.loadShimmerFavouriteandSearch(
+                      context: context,
+                      displayTrash: false,
+                    );
+                  } else{
+                    final List<Map<String, dynamic>> itemList = snapshot.data as List<Map<String, dynamic>>;
 
-                      return ListView.builder(
-                        scrollDirection: Axis.vertical,
-                        itemCount: itemList.length,
-                        itemBuilder: (context, index) {
+                    return ListView.builder(
+                      scrollDirection: Axis.vertical,
+                      itemCount: itemList.length,
+                      itemBuilder: (context, index) {
 
-                          print(itemList[0]['hostel_thumbnail'].toString());
-                          final roomName = itemList[index]['hostel_name'] as String;
-                          final roomPhotos = itemList[index]['hostel_thumbnail'] as String;
-                          final roomAddress = itemList[index]['hostel_location'] as String;
-                          final uID = itemList[index]['uID'] as int;
-                          final roomTelephone = itemList[index]['mobile_number'] as int;
+                        print(itemList[0]['hostel_thumbnail'].toString());
+                        final roomName = itemList[index]['hostel_name'] as String;
+                        final roomPhotos = itemList[index]['hostel_thumbnail'] as String;
+                        final roomAddress = itemList[index]['hostel_location'] as String;
+                        final uID = itemList[index]['uID'] as int;
+                        final roomTelephone = itemList[index]['mobile_number'] as int;
 
-                          return GestureDetector(
-                            onTap: () {
-                              Navigator.of(context).pushNamed(
-                                  AppRouter.adminRoomsRoute,
-                                  arguments: AdminRoomsOnlyArgs(
-                                      uID: uID,
-                                      roomName: roomName,
-                                      roomAddress: roomAddress,
-                                      roomTelephone: roomTelephone
-                                  )
-                              );
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Center(
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(15.0),
-                                        color: Colors.white,
-                                      ),
-                                      width: MediaQuery.of(context).size.width * 0.9,
-                                      child: Row(
-                                        children: [
-                                          CachedNetworkImage(
-                                              imageUrl: '$roomPhotos',
-                                              imageBuilder: (context, imageProvider) =>
-                                                  Container(
-                                                    height: MediaQuery.of(context).size.height * 0.13,
-                                                    width: MediaQuery.of(context).size.width * 0.30,
-                                                    margin: EdgeInsets.all(8.0),
-                                                    decoration: BoxDecoration(
-                                                        borderRadius: BorderRadius.circular(15.0),
-                                                        image: DecorationImage(
-                                                            image: imageProvider,
-                                                            fit: BoxFit.fill
-                                                        )
-                                                    ),
-                                                    child: Column(
-                                                      mainAxisAlignment: MainAxisAlignment.end,
-                                                      children: [
-                                                        Row(
-                                                          mainAxisAlignment: MainAxisAlignment.end,
-                                                          children: [
-                                                            Container(
-                                                              padding: EdgeInsets.all(5.0),
-                                                              decoration: BoxDecoration(
-                                                                color: Colors.white,
-                                                                borderRadius: BorderRadius.circular(8.0),
-                                                              ),
-                                                              margin: EdgeInsets.all(8.0),
-                                                              child: Text(
-                                                                'Room price',
-                                                                style: TextStyle(
-                                                                  fontWeight: FontWeight.w900,
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  )
-                                          ),
-
-                                          Container(
-                                            // height: MediaQuery.of(context).size.height * 0.13,
-                                            margin: EdgeInsets.only(top: 8.0, bottom: 8.0),
-                                            width: MediaQuery.of(context).size.width * 0.54,
-                                            clipBehavior: Clip.values.last,
-                                            decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.circular(15.0),
-                                              // color: Colors.black38
-                                            ),
-                                            child: Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                              children: [
-                                                Text(
-                                                  '$roomName',
-                                                  maxLines: 1,
-                                                  style: TextStyle(
-                                                      overflow: TextOverflow.ellipsis,
-                                                      fontWeight: FontWeight.w700,
-                                                      fontSize: 20.0
+                        return GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).pushNamed(
+                                AppRouter.adminRoomsRoute,
+                                arguments: AdminRoomsOnlyArgs(
+                                    uID: uID,
+                                    roomName: roomName,
+                                    roomAddress: roomAddress,
+                                    roomTelephone: roomTelephone
+                                )
+                            );
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Center(
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(15.0),
+                                      color: Colors.white,
+                                    ),
+                                    width: MediaQuery.of(context).size.width * 0.9,
+                                    child: Row(
+                                      children: [
+                                        CachedNetworkImage(
+                                            imageUrl: '$roomPhotos',
+                                            imageBuilder: (context, imageProvider) =>
+                                                Container(
+                                                  height: MediaQuery.of(context).size.height * 0.13,
+                                                  width: MediaQuery.of(context).size.width * 0.30,
+                                                  margin: EdgeInsets.all(8.0),
+                                                  decoration: BoxDecoration(
+                                                      borderRadius: BorderRadius.circular(15.0),
+                                                      image: DecorationImage(
+                                                          image: imageProvider,
+                                                          fit: BoxFit.fill
+                                                      )
                                                   ),
+                                                  // child: Column(
+                                                  //   mainAxisAlignment: MainAxisAlignment.end,
+                                                  //   children: [
+                                                  //     Row(
+                                                  //       mainAxisAlignment: MainAxisAlignment.end,
+                                                  //       children: [
+                                                  //         Container(
+                                                  //           padding: EdgeInsets.all(5.0),
+                                                  //           decoration: BoxDecoration(
+                                                  //             color: Colors.white,
+                                                  //             borderRadius: BorderRadius.circular(8.0),
+                                                  //           ),
+                                                  //           margin: EdgeInsets.all(8.0),
+                                                  //           child: Text(
+                                                  //             'Room price',
+                                                  //             style: TextStyle(
+                                                  //               fontWeight: FontWeight.w900,
+                                                  //             ),
+                                                  //           ),
+                                                  //         ),
+                                                  //       ],
+                                                  //     ),
+                                                  //   ],
+                                                  // ),
+                                                )
+                                        ),
+
+                                        Container(
+                                          // height: MediaQuery.of(context).size.height * 0.13,
+                                          width: MediaQuery.of(context).size.width * 0.54,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(15.0),
+                                            // color: Colors.blue
+                                          ),
+                                          clipBehavior: Clip.hardEdge,
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                            children: [
+                                              Text(
+                                                '$roomName',
+                                                maxLines: 1,
+                                                style: TextStyle(
+                                                    overflow: TextOverflow.ellipsis,
+                                                    fontWeight: FontWeight.w700,
+                                                    fontSize: 20.0
                                                 ),
-                                                SizedBox(height: 8.0,),
-                                                Row(
-                                                  children: [
-                                                    Icon(
-                                                      Icons.type_specimen,
-                                                      color: Colors.deepOrange.withOpacity(0.5),
-                                                      size: 18.0,
-                                                    ),
-                                                    SizedBox(width: 5.0),
-                                                    Text(
-                                                      'Room type',
-                                                      maxLines: 1,
+                                              ),
+                                              SizedBox(height: 8.0,),
+                                              // Row(
+                                              //   children: [
+                                              //     Icon(
+                                              //       Icons.type_specimen,
+                                              //       color: Colors.deepOrange.withOpacity(0.5),
+                                              //       size: 18.0,
+                                              //     ),
+                                              //     SizedBox(width: 5.0),
+                                              //     Text(
+                                              //       'Room type',
+                                              //       maxLines: 1,
+                                              //       style: TextStyle(
+                                              //         fontWeight: FontWeight.w500,
+                                              //         color: Colors.black.withOpacity(0.8),
+                                              //       ),
+                                              //     ),
+                                              //   ],
+                                              // ),
+                                              Row(
+                                                children: [
+                                                  Icon(
+                                                    Icons.location_on_rounded,
+                                                    color: Colors.deepOrange.withOpacity(0.5),
+                                                    size: 18.0,
+                                                  ),
+                                                  Container(
+                                                    margin: EdgeInsets.only(top: 8.0, bottom: 8.0),
+                                                    width: MediaQuery.of(context).size.width * .38,
+                                                    child: Text(
+                                                      '$roomAddress',
                                                       style: TextStyle(
                                                         fontWeight: FontWeight.w500,
                                                         color: Colors.black.withOpacity(0.8),
                                                       ),
+                                                      overflow: TextOverflow.ellipsis,
                                                     ),
-                                                  ],
-                                                ),
-                                                Row(
-                                                  children: [
-                                                    Icon(
-                                                      Icons.location_on_rounded,
-                                                      color: Colors.deepOrange.withOpacity(0.5),
-                                                      size: 18.0,
-                                                    ),
-                                                    SizedBox(width: 5.0),
-                                                    Container(
-                                                      margin: EdgeInsets.only(top: 8.0, bottom: 8.0),
-                                                      child: Text(
-                                                        '$roomAddress',
-                                                        style: TextStyle(
-                                                          fontWeight: FontWeight.w500,
-                                                          color: Colors.black.withOpacity(0.8),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
+                                                  ),
+                                                ],
+                                              ),
 
-                                                Container(
-                                                  clipBehavior: Clip.values.last,
-                                                  decoration: BoxDecoration(
-                                                  ),
-                                                  child: Row(
-                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                    children: [
-                                                      Row(
-                                                        children: [
-                                                          Icon(
-                                                            Icons.star,
-                                                            color: Colors.deepOrange.withOpacity(0.5),
-                                                            size: 18.0,
+                                              Container(
+                                                clipBehavior: Clip.values.last,
+                                                decoration: BoxDecoration(
+                                                ),
+                                                child: Row(
+                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                  children: [
+                                                    Row(
+                                                      children: [
+                                                        Icon(
+                                                          Icons.star,
+                                                          color: Colors.deepOrange.withOpacity(0.5),
+                                                          size: 18.0,
+                                                        ),
+                                                        Text(
+                                                          'Hostel Rating',
+                                                          maxLines: 1,
+                                                          style: TextStyle(
+                                                            fontWeight: FontWeight.w500,
+                                                            color: Colors.black.withOpacity(0.8),
                                                           ),
-                                                          SizedBox(width: 5.0),
-                                                          Text(
-                                                            'Room rating',
-                                                            maxLines: 1,
-                                                            style: TextStyle(
-                                                              fontWeight: FontWeight.w500,
-                                                              color: Colors.black.withOpacity(0.8),
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ],
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                          )
-                                        ],
-                                      ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        )
+                                      ],
                                     ),
-                                  )
-                                ],
-                              ),
+                                  ),
+                                )
+                              ],
                             ),
-                          );
-                        },
-                      );
-                    }
-                  },
-                ),
+                          ),
+                        );
+                      },
+                    );
+                  }
+                },
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

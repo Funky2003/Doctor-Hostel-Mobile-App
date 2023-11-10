@@ -50,7 +50,6 @@ class UserCard extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: EdgeInsets.all(10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -61,8 +60,8 @@ class UserCard extends StatelessWidget {
                       children: [
                         Expanded(
                           child: Container(
-                            width: 100.0,
-                            height: 100.0,
+                            width: MediaQuery.of(context).size.width * .15,
+                            height: MediaQuery.of(context).size.height * .15,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               color: const Color(0xff7c94b6),
@@ -70,7 +69,7 @@ class UserCard extends StatelessWidget {
                                 image: NetworkImage(
                                   userProfileUrl,
                                 ),
-                                fit: BoxFit.contain,
+                                fit: BoxFit.cover,
                               ),
                               border: Border.all(
                                 color: Colors.white,

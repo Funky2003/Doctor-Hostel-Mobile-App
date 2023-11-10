@@ -202,7 +202,7 @@ class _AdminRoomsOnlyState extends State<AdminRoomsOnly> {
 
                                             Container(
                                               // height: MediaQuery.of(context).size.height * 0.13,
-                                              margin: EdgeInsets.only(top: 8.0, bottom: 8.0),
+                                              margin: const EdgeInsets.only(top: 8.0, bottom: 8.0),
                                               width: MediaQuery.of(context).size.width * 0.54,
                                               clipBehavior: Clip.values.last,
                                               decoration: BoxDecoration(
@@ -216,13 +216,17 @@ class _AdminRoomsOnlyState extends State<AdminRoomsOnly> {
                                                   Row(
                                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                     children: [
-                                                      Text(
-                                                        '$roomName',
-                                                        maxLines: 1,
-                                                        style: TextStyle(
-                                                            overflow: TextOverflow.ellipsis,
-                                                            fontWeight: FontWeight.w700,
-                                                            fontSize: 20.0
+                                                      SizedBox(
+                                                        // color: Colors.blue,
+                                                        width: MediaQuery.of(context).size.width * 0.28,
+                                                        child: Text(
+                                                          '$roomName',
+                                                          maxLines: 1,
+                                                          style: TextStyle(
+                                                              overflow: TextOverflow.ellipsis,
+                                                              fontWeight: FontWeight.w700,
+                                                              fontSize: 20.0
+                                                          ),
                                                         ),
                                                       ),
 
