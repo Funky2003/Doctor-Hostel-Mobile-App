@@ -1,4 +1,10 @@
 # Doctor Hostel Mobile App
  This app helps hostel owners to market their hostel to students
 
- I can't work today so I decided to create a comment 
+# Developed using:
+1. Flutter -> Mobile 
+2. Supabase -> Backend
+
+# Available for:
+1. Android
+2. Ios
